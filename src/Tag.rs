@@ -19,7 +19,17 @@ pub struct Point {
 }
 
 #[enum_dispatch]
-pub trait TagTrait {}
+pub trait TagTrait {
+    fn tag(&self) -> &'static str;
+}
+
+macro_rules! define_tag {
+    ($type:ty, $tag:ident) => {
+        impl TagTrait for $type {
+            fn tag(&self) -> &'static str { stringify!($tag) }
+        }
+    };
+}
 
 #[enum_dispatch(TagTrait)]
 pub enum Any {
@@ -31,16 +41,16 @@ pub enum Any {
 }
 
 pub struct Drawing(pub u64);
-impl TagTrait for Drawing {}
+define_tag!(Drawing, p);
 
 pub struct Reset(pub Option<String>);
-impl TagTrait for Reset {}
+define_tag!(Reset, r);
 
 pub struct Align(pub Alignment);
-impl TagTrait for Align {}
+define_tag!(Align, an);
 
 pub struct Position(pub Point);
-impl TagTrait for Position {}
+define_tag!(Position, pos);
 
 pub struct Origin(pub Point);
-impl TagTrait for Origin {}
+define_tag!(Origin, org);
