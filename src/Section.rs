@@ -28,8 +28,8 @@ pub enum Any {
     Text(Text),
 }
 
-pub struct Comment;
-impl SectionTrait for Comment {}
+mod comment;
+pub use comment::CommentSection as Comment;
 
 pub struct Drawing;
 impl SectionTrait for Drawing {}
