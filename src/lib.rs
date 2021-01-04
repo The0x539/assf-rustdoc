@@ -13,6 +13,7 @@ pub type Style = Todo;
 pub type LineBounds = Todo;
 
 /// Represents the standard line object that any auto4 script would work with.
+///
 /// Also represents the `a-mo.Line` class, which is supposed to be similar.
 ///
 /// Dynamic typing is such a headache.
