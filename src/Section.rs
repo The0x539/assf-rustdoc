@@ -41,5 +41,5 @@ pub use tag::{
     Insertion as TagBlockInsertion,
 };
 
-pub struct Text;
-impl SectionTrait for Text {}
+mod text;
+pub use text::TextSection as Text;

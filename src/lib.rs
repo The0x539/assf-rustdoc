@@ -11,6 +11,8 @@ pub enum Todo {}
 pub type TagList = Todo;
 pub type Style = Todo;
 pub type LineBounds = Todo;
+pub type DrawingBase = Todo;
+pub type YutilsFont = Todo;
 
 /// Represents the standard line object that any auto4 script would work with.
 ///
