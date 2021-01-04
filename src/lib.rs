@@ -57,7 +57,9 @@ pub mod Section;
 pub type StyleName = Option<Either<String, Tag::Reset>>;
 pub type CleanLevel = u8;
 
-/// The width, height, descent, and external leading of a piece of text.
+/// The width, height, descent, and external leading of a piece of text,
+/// as returned by `aegisub.text_extents.
+///
 /// Returned by various `getTextExtents` functions as four values, not a list.
 pub struct TextExtents(
     // width
@@ -70,21 +72,29 @@ pub struct TextExtents(
     pub f64,
 );
 
+/// The bounding box of a piece of text, as returned by `Yutils.shape_bounding`.
+///
+/// The `x1`, `y1`, `x2`, and `y2` fields are accessed using numerical indices in Lua.
 pub struct Bounds {
-    _0: f64,
-    _1: f64,
-    _2: f64,
-    _3: f64,
-    w: f64,
-    h: f64,
+    pub v_0: f64,
+    pub v_1: f64,
+    pub v_2: f64,
+    pub v_3: f64,
+    pub w: f64,
+    pub h: f64,
 }
+
+/// The metrics of a font, as returned by `yutils_font_handle.metrics`.
+///
+/// `bounds` is present iff `getTextMetrics` was called with `calculateBounds = true`.
 pub struct Metrics {
-    ascent: f64,
-    descent: f64,
-    internal_leading: f64,
-    external_leading: f64,
-    height: f64,
-    bounds: Option<Bounds>,
+    pub ascent: f64,
+    pub descent: f64,
+    pub internal_leading: f64,
+    pub external_leading: f64,
+    pub height: f64,
+    pub width: f64,
+    pub bounds: Option<Bounds>,
 }
 
 #[path = "LineContents.rs"]
