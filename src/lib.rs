@@ -53,7 +53,6 @@ impl<T> Callback<T> for fn(&mut T, &[T], usize, usize) {}
 pub mod Tag;
 
 pub mod Section;
-pub use Section::SectionType;
 
 pub type StyleName = Option<Either<String, Tag::Reset>>;
 pub type CleanLevel = u8;
