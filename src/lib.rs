@@ -56,15 +56,20 @@ pub mod Section;
 
 pub type StyleName = Option<Either<String, Tag::Reset>>;
 pub type CleanLevel = u8;
+
+/// The width, height, descent, and external leading of a piece of text.
+/// Returned by various `getTextExtents` functions as four values, not a list.
 pub struct TextExtents(
-    /// width
-    f64,
-    /// height
-    f64,
-    /// descent
-    f64,
-    /** ext_lead */ f64,
+    // width
+    pub f64,
+    // height
+    pub f64,
+    // descent
+    pub f64,
+    // ext_lead
+    pub f64,
 );
+
 pub struct Bounds {
     _0: f64,
     _1: f64,
